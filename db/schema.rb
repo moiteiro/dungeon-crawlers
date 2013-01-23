@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(:version => 20130123141844) do
 
   create_table "characters", :force => true do |t|
-    t.string   "name"
-    t.boolean  "genre"
-    t.integer  "level"
+    t.string   "name",                      :null => false
+    t.boolean  "genre",                     :null => false
+    t.integer  "level",      :default => 1
     t.integer  "hp"
     t.integer  "strength"
     t.integer  "resistance"
@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(:version => 20130123141844) do
     t.integer  "armor"
     t.integer  "fire_power"
     t.integer  "experience"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
+
+  add_index "characters", ["name"], :name => "index_characters_on_name"
 
 end
