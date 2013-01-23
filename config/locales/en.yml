@@ -3,3 +3,4 @@
 
 en:
   hello: "Hello world"
+  max_points_reached: "Max points reached."
