@@ -2,11 +2,26 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'slim-rails'
+gem 'jquery-rails'
+gem 'twitter-bootstrap-rails'
 
-gem 'sqlite3'
+gem 'unicorn', '4.5.0'
 
+group :development, :test do
+  gem 'sqlite3', '1.3.6'
+  gem 'rspec-rails', '2.12.0'
+end
+
+group :production do
+  gem 'pg'
+end
+
+group :test do
+  gem 'capybara', '2.0.1'
+  gem 'launchy', '2.1.2'
+  gem 'factory_girl_rails', '4.1.0'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,8 +34,6 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
