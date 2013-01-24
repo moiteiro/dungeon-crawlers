@@ -5,5 +5,7 @@ class CreateSquads < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    add_index :squads, :name
   end
 end

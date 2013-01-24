@@ -1,4 +1,6 @@
 class Character < ActiveRecord::Base
+  belongs_to :squad
+  
   # Basic info
   attr_accessible :name, :genre
   
