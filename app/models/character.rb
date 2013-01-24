@@ -1,8 +1,6 @@
 class Character < ActiveRecord::Base
   belongs_to :squad
   
-  validates_associated :squad
-  
   # Basic info
   attr_accessible :name, :genre, :squad_id
   
@@ -15,6 +13,8 @@ class Character < ActiveRecord::Base
   before_save :calculate_max_hp
   
   validates :name, presence: true
+  validates_associated :squad
+  validate :squad_size_limit
   validate :max_value_per_battle_attribute, on: :create
   validate :skill_points_used, on: :create
   
@@ -24,6 +24,10 @@ class Character < ActiveRecord::Base
   
   def attributes_sum
     strength.to_i + skill.to_i + resistance.to_i + armor.to_i + fire_power.to_i
+  end
+  
+  def squad_size_limit
+    errors.add(:base, I18n.t('.squad_limit_reached')) unless squad.characters.length < Squad::CHARACTERS_LIMIT
   end
   
   def max_value_per_battle_attribute
