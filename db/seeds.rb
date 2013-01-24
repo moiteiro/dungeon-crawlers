@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Theme.create(name: 'Castle')
+Theme.create(name: 'Cave')
+Theme.create(name: 'Forest')

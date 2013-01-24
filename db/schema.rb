@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130124123321) do
+ActiveRecord::Schema.define(:version => 20130124150142) do
 
   create_table "characters", :force => true do |t|
     t.string   "name",                      :null => false
@@ -32,6 +32,20 @@ ActiveRecord::Schema.define(:version => 20130124123321) do
   add_index "characters", ["name"], :name => "index_characters_on_name"
   add_index "characters", ["squad_id"], :name => "index_characters_on_squad_id"
 
+  create_table "dungeon_squads", :force => true do |t|
+    t.integer  "dungeon_id"
+    t.integer  "squad_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "dungeons", :force => true do |t|
+    t.string   "name"
+    t.integer  "theme_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "squads", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -39,5 +53,11 @@ ActiveRecord::Schema.define(:version => 20130124123321) do
   end
 
   add_index "squads", ["name"], :name => "index_squads_on_name"
+
+  create_table "themes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
