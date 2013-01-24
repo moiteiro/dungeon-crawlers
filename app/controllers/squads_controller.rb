@@ -15,7 +15,6 @@ class SquadsController < ApplicationController
 
 	def new
 		@squad = Squad.new
-		@squad.characters = Character.all
 
 		respond_with @squad
 	end
@@ -26,7 +25,7 @@ class SquadsController < ApplicationController
 		if @squad.save
 			respond_with @squad
 		else
-			render json: { :errors => @character.errors.full_messages }
+			render json: { errors: @character.errors.full_messages }
 		end
 	end
 
@@ -42,7 +41,7 @@ class SquadsController < ApplicationController
 		if @squad.update_attributes(params[:squad])
 			respond_with @squad
 		else
-			render json: { :errors => @character.errors.full_messages }
+			render json: { errors: @character.errors.full_messages }
 		end
 	end
 

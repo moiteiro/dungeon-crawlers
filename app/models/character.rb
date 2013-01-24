@@ -1,8 +1,10 @@
 class Character < ActiveRecord::Base
   belongs_to :squad
   
+  validates_associated :squad
+  
   # Basic info
-  attr_accessible :name, :genre
+  attr_accessible :name, :genre, :squad_id
   
   # Battle attributes
   attr_accessible :level, :strength, :skill, :resistance, :armor, :fire_power, :experience
@@ -13,7 +15,6 @@ class Character < ActiveRecord::Base
   before_save :calculate_max_hp
   
   validates :name, presence: true
-  validates :genre, presence: true
   validate :max_value_per_battle_attribute, on: :create
   validate :skill_points_used, on: :create
   
