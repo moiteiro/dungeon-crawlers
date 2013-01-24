@@ -25,7 +25,7 @@ class CharactersController < ApplicationController
     if @character.save
       respond_with @character
     else
-      render json: { :errors => @character.errors.full_messages }
+      render json: { errors: @character.errors.full_messages }
     end
   end
   
@@ -41,7 +41,7 @@ class CharactersController < ApplicationController
     if @character.update_attributes(params[:character])
       respond_with @character
     else
-      render json: { :errors => @character.errors.full_messages }
+      render json: { errors: @character.errors.full_messages }
     end
   end
 
